@@ -6,8 +6,6 @@ $OsBits = Get-ProcessorBits;
 $NvmSettings = "$AppDataNVM\settings.txt";
 $ZipUrl = "https://github.com/coreybutler/nvm-windows/releases/download/1.1.0/nvm-noinstall.zip";
 
-# Following the manual installation guide - https://github.com/coreybutler/nvm-windows/wiki#manual-installation
-
 Install-ChocolateyZipPackage -PackageName "nvm" -Url  $ZipUrl -UnzipLocation $AppDataNVM;
 
 New-Item $NvmSettings -type file -force -value `

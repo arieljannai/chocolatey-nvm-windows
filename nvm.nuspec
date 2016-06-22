@@ -6,18 +6,14 @@
     <id>nvm</id>
     <title>nvm (Portables)</title>
     <version>1.1.0</version>
-    <authors>__REPLACE_AUTHORS_OF_SOFTWARE_COMMA_SEPARATED__</authors>
+    <authors>coreybutler</authors>
     <owners>Ariel Jannai</owners>
-    <summary>__REPLACE__</summary>
-    <description>__REPLACE__MarkDown_Okay 
+    <summary>A node.js version management utility for Windows.</summary>
+    <description>Manage multiple installations of node.js on a Windows computer.
     </description>
     <projectUrl>https://github.com/coreybutler/nvm-windows</projectUrl>
-    <packageSourceUrl>https://github.com/coreybutler/nvm-windows</packageSourceUrl>
-    <!--<projectSourceUrl></projectSourceUrl>
-    <docsUrl></docsUrl>
-    <mailingListUrl></mailingListUrl>
-    <bugTrackerUrl></bugTrackerUrl>-->
-    <tags>nvm admin SPACE_SEPARATED</tags>
+    <packageSourceUrl>https://github.com/arieljannai/chocolatey-nvm-windows</packageSourceUrl>
+    <tags>nvm node nodejs node.js version management windows</tags>
     <copyright></copyright>
     <licenseUrl>https://github.com/coreybutler/nvm-windows/blob/master/LICENSE</licenseUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
@@ -26,7 +22,7 @@
       <dependency id="" version="__VERSION__" />
       <dependency id="" />
     </dependencies>-->
-    <releaseNotes>__REPLACE_OR_REMOVE__MarkDown_Okay</releaseNotes>
+    <!-- <releaseNotes>__REPLACE_OR_REMOVE__MarkDown_Okay</releaseNotes> -->
     <!--<provides></provides>-->
   </metadata>
   <files>
