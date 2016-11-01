@@ -2,7 +2,7 @@
 
 Basically, following the [manual installation guide](https://github.com/coreybutler/nvm-windows/wiki#manual-installation).
 
-## Installation prcoess
+## Installation process
 * Extract the `noinstall` zip
 * Creates the settings.txt file with default values (and matching arch)
 * Creating `NVM_HOME` and `NVM_SYMLINK` environment variables
