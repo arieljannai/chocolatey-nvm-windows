@@ -9,7 +9,7 @@ $nodePath = "$env:SystemDrive\Program Files\nodejs"
 # If requesting per user install use $env:APPDATA else $env:ProgramData
 $nvmPath = Join-Path $env:ProgramData $packageName
 $OsBits = Get-ProcessorBits
-$NvmSettings = Join-Path $nvmPath "settings.txt"
+$NvmSettingsFile = Join-Path $nvmPath "settings.txt"
 
 $packageArgs = @{
   packageName   = $packageName
@@ -21,20 +21,28 @@ $packageArgs = @{
 }
 Install-ChocolateyZipPackage @packageArgs
 
-#New-Item "$NvmSettings.newitem" -type file -force -value `
+#New-Item "$NvmSettingsFile" -type file -force -value `
 # $("root: $nvmPath `r`npath: $nodePath `r`narch: $OsBits`r`nproxy: none");
 
 # This pattern will be easier to maintain if new settings are added
+# If existing settings file, read and create dictionary of values
 $NvmSettingsDict = [ordered]@{}
-$NvmSettingsDict['root'] = $nvmPath
-$NvmSettingsDict['path'] = $nodePath
-$NvmSettingsDict['arch'] = $OsBits
-$NvmSettingsDict['proxy'] = "none"
+if (Test-Path $NvmSettingsFile) {
+    $NvmSettings = Get-Content $NvmSettingsFile
+    $NvmSettings | Foreach-Object { $NvmSettingsDict.add($_.split(':',2)[0],$_.split(':',2)[1]) }
+    Write-Output "Detected existing settings file"
+    $NvmSettingsDict.GetEnumerator() | % { "$($_.Name): $($_.Value)" } | Write-Verbose
+}
+# only set values if not present or missing from existing settings
+if (!($NvmSettingsDict['root'])) { $NvmSettingsDict['root'] = $nvmPath }
+if (!($NvmSettingsDict['path'])) { $NvmSettingsDict['path'] = $nodePath }
+if (!($NvmSettingsDict['arch'])) { $NvmSettingsDict['arch'] = $OsBits }
+if (!($NvmSettingsDict['proxy'])) { $NvmSettingsDict['proxy'] = "none" }
 
 # Essentially writing a YAML file
 # The ASCII type is required for NVM to read the file properly
 $NvmSettingsDict.GetEnumerator() | % { "$($_.Name): $($_.Value)" } | Write-Verbose
-$NvmSettingsDict.GetEnumerator() | % { "$($_.Name): $($_.Value)" } | Out-File "$NvmSettings" -Force -Encoding ascii
+$NvmSettingsDict.GetEnumerator() | % { "$($_.Name): $($_.Value)" } | Out-File "$NvmSettingsFile" -Force -Encoding ascii
 
 # If you don't install to the toolsDir Chocolatey won't create a shim
 # This would avoid creating an nvm.exe shim in the $chocolateyRoot\bin folder that is in the path
