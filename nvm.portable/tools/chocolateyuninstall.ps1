@@ -51,7 +51,8 @@ $AssembledNewPath
 
 [Environment]::SetEnvironmentVariable("PATH",$AssembledNewPath,"Machine")
 $newEnvironmentPath = [Environment]::GetEnvironmentVariable("PATH","Machine")
-$newEnvironmentPath
+$env:PATH = $newEnvironmentPath
+$env:PATH
 
 # Below requires Choco >=0.9.10
 # Uninstall-ChocolateyEnvironmentVariable -VariableName "NVM_HOME" -VariableType User;
