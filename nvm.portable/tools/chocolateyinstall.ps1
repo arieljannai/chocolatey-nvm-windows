@@ -1,5 +1,5 @@
 ﻿
-$ErrorActionPreference = "Stop";
+$ErrorActionPreference = "Stop"
 
 $packageName= 'nvm'
 $url        = "https://github.com/coreybutler/nvm-windows/releases/download/1.1.1/nvm-noinstall.zip"

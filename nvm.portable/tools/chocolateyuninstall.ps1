@@ -16,7 +16,7 @@ Uninstall-ChocolateyZipPackage $packageName $zipName
 Remove-Item $nvmPath -Force -Recurse;
 
 # Backwards compatible to pre 0.9.10 Choco
-Install-ChocolateyEnvironmentVariable -VariableName "NVM_HOME" -VariableValue $null -VariableType User
+Install-ChocolateyEnvironmentVariable -VariableName "NVM_HOME" -VariableValue $null -VariableType Machine
 Install-ChocolateyEnvironmentVariable -VariableName "NVM_SYMLINK" -VariableValue $null -VariableType Machine
 
 # Better hackery
@@ -36,7 +36,7 @@ foreach ($path in $environmentPath.split(';'))
         [string[]]$newpath += "$path"
         "$path added to `$newpath"
     } else {
-        "Bad path found: $path"
+        "Path to remove found: $path"
     }
 }
 $AssembledNewPath = ($newpath -join(';')).trimend(';')
