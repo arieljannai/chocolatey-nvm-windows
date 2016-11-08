@@ -1,7 +1,7 @@
 ﻿
-$ErrorActionPreference = 'Stop';
+$ErrorActionPreference = 'Stop'
 
-$uninstalled = $false;
+$uninstalled = $false
 $packageName= 'nvm' # arbitrary name for the package, used in messages
 $zipName = "nvm-noinstall.zip"
 $nvm = (& where.exe $packageName)
@@ -13,7 +13,7 @@ Uninstall-ChocolateyZipPackage $packageName $zipName
 # If uninstalling and not just upgrading
 # we will remove all node versions that were installed
 # and therefore any globally installed modules
-Remove-Item $nvmPath -Force -Recurse;
+if (Test-Path $nvmPath) { Remove-Item $nvmPath -Force -Recurse }
 
 # Backwards compatible to pre 0.9.10 Choco
 Install-ChocolateyEnvironmentVariable -VariableName "NVM_HOME" -VariableValue $null -VariableType Machine
