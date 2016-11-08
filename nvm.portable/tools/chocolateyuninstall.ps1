@@ -19,14 +19,14 @@ Remove-Item $nvmPath -Force -Recurse;
 Install-ChocolateyEnvironmentVariable -VariableName "NVM_HOME" -VariableValue $null -VariableType Machine
 Install-ChocolateyEnvironmentVariable -VariableName "NVM_SYMLINK" -VariableValue $null -VariableType Machine
 
-# Better hackery
-# Via @DarwinJS on GitHub as a temp workaround, https://github.com/chocolatey/choco/issues/310
-#Using .NET method prevents expansion (and loss) of environment variables (whether the target of the removal or not)
+# Remove installed variable(s) from PATH
+# Loop via @DarwinJS on GitHub as a temp workaround, https://github.com/chocolatey/choco/issues/310
 #To avoid bad situations - does not use substring matching, regular expressions are "exact" matches
 #Removes duplicates of the target removal path, Cleans up double ";", Handles ending "\"
 
+# Need to escape any backslash in the regex
 [regex] $PathsToRemove = "^(%NVM_HOME%|%NVM_SYMLINK%)"
-$environmentPath = [Environment]::GetEnvironmentVariable("PATH","Machine")
+$environmentPath = Get-EnvironmentVariable -Name 'PATH' -Scope $EnvVariableType -PreserveVariables
 $environmentPath
 [string[]]$newpath = ''
 foreach ($path in $environmentPath.split(';'))
@@ -42,9 +42,10 @@ foreach ($path in $environmentPath.split(';'))
 $AssembledNewPath = ($newpath -join(';')).trimend(';')
 $AssembledNewPath
 
-[Environment]::SetEnvironmentVariable("PATH",$AssembledNewPath,"Machine")
-$newEnvironmentPath = [Environment]::GetEnvironmentVariable("PATH","Machine")
-$env:PATH = $newEnvironmentPath
+Install-ChocolateyEnvironmentVariable -variableName 'PATH' -variableValue $AssembledNewPath -variableType $EnvVariableType
+"Path with variables"
+$newEnvironmentPath = Get-EnvironmentVariable -Name 'PATH' -Scope $EnvVariableType -PreserveVariables
+"Path with values instead of variables"
 $env:PATH
 
 # Below requires Choco >=0.9.10
