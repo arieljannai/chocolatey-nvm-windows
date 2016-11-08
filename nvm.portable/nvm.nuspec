@@ -5,9 +5,9 @@
     <!-- Read this before publishing packages to chocolatey.org: https://github.com/chocolatey/chocolatey/wiki/CreatePackages -->
     <id>nvm.portable</id>
     <title>NVM (Portable)</title>
-    <version>1.1.0</version>
+    <version>1.1.1</version>
     <authors>coreybutler</authors>
-    <owners>Ariel Jannai</owners>
+    <owners>Ariel Jannai, Ethan Spoelstra</owners>
     <summary>A node.js version management utility for Windows.</summary>
     <description>Manage multiple installations of node.js on a Windows computer.</description>
     <projectUrl>https://github.com/coreybutler/nvm-windows</projectUrl>

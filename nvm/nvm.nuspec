@@ -5,15 +5,15 @@
     <!-- Read this before publishing packages to chocolatey.org: https://github.com/chocolatey/chocolatey/wiki/CreatePackages -->
     <id>nvm</id>
     <title>NVM</title>
-    <version>1.1.0</version>
+    <version>1.1.1</version>
     <authors>coreybutler</authors>
-    <owners>Ariel Jannai</owners>
+    <owners>Ariel Jannai, Ethan Spoelstra</owners>
     <summary>A node.js version management utility for Windows.</summary>
     <description>Manage multiple installations of node.js on a Windows computer.
     </description>
     <projectUrl>https://github.com/coreybutler/nvm-windows</projectUrl>
     <packageSourceUrl>https://github.com/arieljannai/chocolatey-nvm-windows</packageSourceUrl>
-    <tags>nvm node nodejs node.js version management windows</tags>
+    <tags>nvm node nodejs node.js version management windows admin</tags>
     <copyright></copyright>
     <licenseUrl>https://github.com/coreybutler/nvm-windows/blob/master/LICENSE</licenseUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
