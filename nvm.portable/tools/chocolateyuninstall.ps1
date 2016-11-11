@@ -5,6 +5,7 @@ $uninstalled = $false
 $packageName= 'nvm' # arbitrary name for the package, used in messages
 $zipName = "nvm-noinstall.zip"
 $nvm = (& where.exe $packageName)
+$EnvVariableType = 'Machine'
 
 # Gets just the base path where nvm was located
 $nvmPath = Split-Path $nvm
@@ -16,8 +17,8 @@ Uninstall-ChocolateyZipPackage $packageName $zipName
 if (Test-Path $nvmPath) { Remove-Item $nvmPath -Force -Recurse }
 
 # Backwards compatible to pre 0.9.10 Choco
-Install-ChocolateyEnvironmentVariable -VariableName "NVM_HOME" -VariableValue $null -VariableType Machine
-Install-ChocolateyEnvironmentVariable -VariableName "NVM_SYMLINK" -VariableValue $null -VariableType Machine
+Install-ChocolateyEnvironmentVariable -VariableName "NVM_HOME" -VariableValue $null -VariableType $EnvVariableType
+Install-ChocolateyEnvironmentVariable -VariableName "NVM_SYMLINK" -VariableValue $null -VariableType $EnvVariableType
 
 # Remove installed variable(s) from PATH
 # Loop via @DarwinJS on GitHub as a temp workaround, https://github.com/chocolatey/choco/issues/310
