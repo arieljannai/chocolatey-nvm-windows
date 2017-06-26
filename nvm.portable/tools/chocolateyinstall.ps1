@@ -2,7 +2,7 @@
 $ErrorActionPreference = "Stop"
 
 $packageName= 'nvm'
-$url        = "https://github.com/coreybutler/nvm-windows/releases/download/1.1.1/nvm-noinstall.zip"
+$url        = "https://github.com/coreybutler/nvm-windows/releases/download/1.1.5/nvm-noinstall.zip"
 
 $nodePath = "$env:SystemDrive\Program Files\nodejs"
 # Install nvm to its own directory, not in the chocolatey lib folder
@@ -16,7 +16,7 @@ $packageArgs = @{
   unzipLocation = $nvmPath
   url           = $url
 
-  checksum      = 'D2AC6DD3859B463A4D9249680E3A0BAB104652CBB63987C262767A1F8E058B4AA07405668732E33D06907AAA76208FAFFC7DE85398C5A0A36A90D9E484C06068'
+  checksum      = 'A2BFB76C740692ABCDE7B3A9E60DC8A9CE475C8DBDE3938FD929B76E7067ED60B716E6279BB158036DC613C6928FE9AF809F4F437302D9D6DCB325A993F359B9'
   checksumType  = 'sha512'
 }
 Install-ChocolateyZipPackage @packageArgs
