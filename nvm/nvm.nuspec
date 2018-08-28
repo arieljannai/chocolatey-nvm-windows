@@ -5,7 +5,7 @@
     <!-- Read this before publishing packages to chocolatey.org: https://github.com/chocolatey/chocolatey/wiki/CreatePackages -->
     <id>nvm</id>
     <title>NVM</title>
-    <version>1.1.5</version>
+    <version>1.1.7</version>
     <authors>coreybutler</authors>
     <owners>Ariel Jannai, Ethan Spoelstra</owners>
     <summary>A node.js version management utility for Windows.</summary>
@@ -19,7 +19,7 @@
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <iconUrl>http://devstickers.com/assets/img/cat/nodejs.png</iconUrl>
     <dependencies>
-      <dependency id="nvm.portable" version="1.1.5" />
+      <dependency id="nvm.portable" version="1.1.7" />
     </dependencies>
     <!-- <releaseNotes>__REPLACE_OR_REMOVE__MarkDown_Okay</releaseNotes> -->
     <!--<provides></provides>-->
