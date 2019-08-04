@@ -1,4 +1,7 @@
-﻿# Chocolatey [nvm-windows](https://github.com/coreybutler/nvm-windows) package
+# Looking for maintainers
+I'm not using nvm those days, looking for someone who wants to handle the repo
+
+# Chocolatey [nvm-windows](https://github.com/coreybutler/nvm-windows) package
 
 Basically, following the [manual installation guide](https://github.com/coreybutler/nvm-windows/wiki#manual-installation).
 
